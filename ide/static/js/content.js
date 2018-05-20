@@ -936,7 +936,7 @@ class Content extends React.Component {
              </div>
              <h5 className="sidebar-heading">EXTRAS</h5>
              <a className="btn btn-block extra-buttons text-left" onClick={this.infoModal}>About Us</a>
-             <a className="btn btn-block extra-buttons text-left" href="https://github.com/Cloud-CV/Fabrik" target="_blank">GitHub</a>
+             <a className="btn btn-block extra-buttons text-left" href="https://github.com/party98/Fabrik-Pro" target="_blank">GitHub</a>
              <a className="btn btn-block extra-buttons text-left" href="http://cloudcv.org" target="_blank">CloudCV</a>
           </div>
         </div>

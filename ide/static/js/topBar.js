@@ -34,8 +34,6 @@ class TopBar extends React.Component {
                   </button>
                   <ul className="dropdown-menu">
                     <li><a className="btn" href="#" onClick={() => this.props.exportNet('caffe')}>Caffe</a></li>
-                    <li><a className="btn" href="#" onClick={() => this.props.exportNet('keras')}>Keras</a></li>
-                    <li><a className="btn" href="#" onClick={() => this.props.exportNet('tensorflow')}>Tensorflow</a></li>
                   </ul>
                 </div>
               </div>
@@ -51,18 +49,6 @@ class TopBar extends React.Component {
                         <a className="btn">
                         <label htmlFor="inputFilecaffe">Caffe</label>
                         <input id="inputFilecaffe" type="file" accept=".prototxt" onChange={() => this.props.importNet('caffe', '')}/>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="btn">
-                        <label htmlFor="inputFilekeras">Keras</label>
-                        <input id="inputFilekeras" type="file" accept=".json" onChange={() => this.props.importNet('keras', '')}/>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="btn">
-                        <label htmlFor="inputFiletensorflow">Tensorflow</label>
-                        <input id="inputFiletensorflow" type="file" accept=".pbtxt" onChange={() => this.props.importNet('tensorflow', '')}/>
                         </a>
                     </li>
                     <li><a className="btn" onClick={() => this.props.urlModal()}>URL</a></li>
