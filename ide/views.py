@@ -5,7 +5,7 @@ import yaml
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from utils.shapes import get_shapes, get_layer_shape, handle_concat_layer
+from ide.utils.shapes import get_shapes, get_layer_shape, handle_concat_layer
 
 
 def index(request):

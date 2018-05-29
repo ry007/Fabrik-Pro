@@ -7,7 +7,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - fabrik
+      - fabrik-pro
 
   reactjs:
     container_name: reactjs
@@ -21,7 +21,7 @@ services:
       - .:/code
       - /code/node_modules
     networks:
-      - fabrik
+      - fabrik-pro
 
   django:
     restart: always
@@ -43,7 +43,7 @@ services:
     volumes:
       - .:/code
     networks:
-      - fabrik
+      - fabrik-pro
 
 networks:
-  fabrik:
+  fabrik-pro:

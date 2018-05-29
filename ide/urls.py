@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from views import index, calculate_parameter, fetch_layer_shape
+from ide.views import index, calculate_parameter, fetch_layer_shape
 
 urlpatterns = [
     url(r'^$', index),

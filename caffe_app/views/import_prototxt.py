@@ -6,8 +6,8 @@ from caffe.proto import caffe_pb2
 from google.protobuf import text_format
 import tempfile
 import subprocess
-import urllib2
-from urlparse import urlparse
+import urllib.request as urllib2
+from urllib.parse import urlparse
 
 # ******Data Layers******
 

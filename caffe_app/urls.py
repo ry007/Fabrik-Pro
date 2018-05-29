@@ -1,8 +1,8 @@
 from django.conf.urls import url
-from views.import_prototxt import import_prototxt
-from views.export_prototxt import export_to_caffe
-from views.DB import save_to_db
-from views.DB import load_from_db
+from caffe_app.views.import_prototxt import import_prototxt
+from caffe_app.views.export_prototxt import export_to_caffe
+from caffe_app.views.DB import save_to_db
+from caffe_app.views.DB import load_from_db
 
 urlpatterns = [
     url(r'^export$', export_to_caffe, name='caffe-export'),

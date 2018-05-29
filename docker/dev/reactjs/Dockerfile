@@ -1,12 +1,8 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
-MAINTAINER CloudCV Team
+RUN apt-get update -qq && apt-get install -y build-essential curl libfontconfig
 
-RUN apt-get update -qq && apt-get install -y build-essential git curl libfontconfig
-
-RUN apt-get install nodejs-legacy -y
-
-RUN apt-get install npm -y
+RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash - && apt-get install -y nodejs
 
 RUN apt-get install -y ruby-dev
 

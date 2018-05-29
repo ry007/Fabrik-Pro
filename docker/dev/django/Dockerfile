@@ -1,11 +1,13 @@
-FROM ubuntu:16.04
-MAINTAINER CloudCV Team
+FROM ubuntu:18.04
+
+RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+RUN ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         cmake \
         git \
-        wget \
+        curl \
         libatlas-base-dev \
         libboost-all-dev \
         libgflags-dev \
@@ -17,12 +19,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libprotobuf-dev \
         libsnappy-dev \
         protobuf-compiler \
-        python-dev \
-        python-numpy \
-        python-pip \
-        python-setuptools \
-        python-scipy && \
+        python3.6-dev \
+        python3-setuptools\
+        python3-pip && \
     rm -rf /var/lib/apt/lists/*
+
 
 ENV CAFFE_ROOT=$HOME/caffe
 
@@ -30,12 +31,13 @@ WORKDIR $CAFFE_ROOT
 
 ENV CLONE_TAG=1.0
 
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 
 RUN git clone -b ${CLONE_TAG} --depth 1 https://github.com/BVLC/caffe.git . && \
-    cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
-    mkdir build && cd build && \
-    cmake -DCPU_ONLY=1 .. && \
+    cd python && for req in $(cat requirements.txt) pydot; do pip3 install $req; done
+
+RUN apt-get update && apt-get install -y curl
+RUN    mkdir build && cd build && cmake -DCPU_ONLY=1 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -Dpython_version=3 .. && \
     make -j"$(nproc)"
 
 ENV PYCAFFE_ROOT $CAFFE_ROOT/python
@@ -47,6 +49,6 @@ WORKDIR /code
 
 ADD . /code
 
-RUN pip install -r requirements/dev.txt
-
+RUN pip3 install -r requirements/dev.txt
+RUN pip3 install --upgrade python-dateutil
 EXPOSE 8000
